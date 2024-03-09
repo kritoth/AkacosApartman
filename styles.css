@@ -1,0 +1,19 @@
+/* Color Theme Swatches in Hex */
+.Dark-main-color { color: #726559; }
+.Medium-main-color { color: #BBA997; }
+.Light-main-color { color: #FFFFFF; }
+
+/* Accessibility contrast colors */
+.contrast-text {color: #FFC745; }
+.contrast-background {color: #003B3A; }
+
+* {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #F0B87D;
+}
