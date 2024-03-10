@@ -14,6 +14,57 @@
     padding: 0;
 }
 
-body {
-    background-color: #F0B87D;
+header {
+    z-index: 99;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 120px;
+    transition: 1s ease;
+}
+
+header .brand {
+    color: #726559;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 640;
+    max-height: 120px;
+    max-width: 120px;
+    
+}
+
+header .brand img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+header #navigation .nav-items a {
+    position: relative;
+    color: #726559;
+    font-size: 1em;
+    font-weight: 400;
+    text-decoration: none;
+    margin-left: 30px;
+    transition: 0.8s ease;
+}
+
+header #navigation .nav-items a::before {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: #FFC745;
+    transition: 0.4s ease;
+}
+
+header #navigation .nav-items a:hover:before {
+    width: 100%;
 }
