@@ -25,28 +25,32 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px 120px;
-    transition: 1s ease;
+    transition: 0.8s ease;
 }
 
 header .brand {
-    color: #726559;
+    color: #ffffff;
     text-decoration: none;
     font-size: 1.2em;
     font-weight: 640;
     max-height: 120px;
     max-width: 120px;
-    
 }
 
 header .brand img {
     max-width: 100%;
     height: auto;
     object-fit: contain;
+    transition: 0.8s ease;
+}
+
+header .brand img:hover {
+    transform: scale(1.08);
 }
 
 header #navigation .nav-items a {
     position: relative;
-    color: #726559;
+    color: #FFFFFF;
     font-size: 1em;
     font-weight: 400;
     text-decoration: none;
@@ -67,4 +71,68 @@ header #navigation .nav-items a::before {
 
 header #navigation .nav-items a:hover:before {
     width: 100%;
+}
+
+section {
+    padding: 120px 180px;
+}
+
+#home {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #BBA997;
+}
+
+#home .content {
+    color: #FFFFFF;
+    z-index: 88;
+    width: 80%;
+    margin-top: 48px;
+}
+
+#home .content h1 {
+    font-size: 4em;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    line-height: 72px;
+    margin-bottom: 40px;
+}
+
+#home .content h1 span {
+    font-size: 1.2em;
+    font-weight: 400;
+}
+
+#home .content p {
+    margin-bottom: 64px;
+}
+
+#home .media-icons {
+    z-index: 88;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    right: 32px;
+    transition: 0.4s ease;
+}
+
+#home .media-icons a {
+    color: #FFFFFF;
+    font-size: 1.4em;
+    transition: 0.4s ease;
+}
+
+#home .media-icons a:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+#home .media-icons a:hover {
+    color: #FFC745;
+    transform: scale(1.2);
 }
