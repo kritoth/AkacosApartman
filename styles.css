@@ -14,6 +14,16 @@
     padding: 0;
 }
 
+html {
+    height: 100dvh;
+    width: 100dvw;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+}
+
 header {
     z-index: 99;
     position: absolute;
@@ -39,7 +49,7 @@ header .brand {
 
 header .brand img {
     max-width: 100%;
-    height: auto;
+    max-height: 100%;
     object-fit: contain;
     transition: 0.8s ease;
 }
@@ -135,4 +145,9 @@ section {
 #home .media-icons a:hover {
     color: #FFC745;
     transform: scale(1.2);
+}
+
+/* Initial state */
+#about, #rooms, #gallery, #contact {
+    display:none;
 }
