@@ -160,7 +160,7 @@ section {
 }
 
 /* Initial state */
-#about, #rooms, #gallery, #contact {
+#about, #rooms, #gallery, #contact, #home-btn {
     display:none;
 }
 
@@ -243,6 +243,10 @@ section {
 
     #home .media-icons {
         right: 16px;
+    }
+
+    #home-btn {
+        display: block;
     }
 }
 
