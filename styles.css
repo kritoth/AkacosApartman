@@ -48,7 +48,7 @@ header .brand img:hover {
     transform: scale(1.08);
 }
 
-header #navigation .nav-items a {
+header .navigation .nav-items a {
     position: relative;
     color: #FFFFFF;
     font-size: 1em;
@@ -58,7 +58,7 @@ header #navigation .nav-items a {
     transition: 0.8s ease;
 }
 
-header #navigation .nav-items a::before {
+header .navigation .nav-items a::before {
     content: '';
     position: absolute;
     bottom: -6px;
@@ -69,7 +69,7 @@ header #navigation .nav-items a::before {
     transition: 0.4s ease;
 }
 
-header #navigation .nav-items a:hover:before {
+header .navigation .nav-items a:hover:before {
     width: 100%;
 }
 
@@ -86,6 +86,17 @@ section {
     align-items: center;
     flex-direction: column;
     background: #BBA997;
+}
+
+#home::before {
+    z-index: 77;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(187, 169, 151, 0.7);
 }
 
 #home .content {
@@ -137,7 +148,104 @@ section {
     transform: scale(1.2);
 }
 
+#home img {
+    z-index: 00;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+}
+
 /* Initial state */
 #about, #rooms, #gallery, #contact {
     display:none;
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        padding: 12px 20px;
+    }
+    
+    header .brand img {
+        max-height: 80px;
+        max-width: 80px;
+    }
+
+    header .navigation {
+        display: none;
+    }
+
+    header .navigation.active {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100dvh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(1, 1, 1, 0.4);
+    }
+
+    header .navigation .nav-items a {
+        color: #726559;
+        font-size: 1.2em;
+        margin: 20px;
+    }
+
+    header .navigation .nav-items a::before {
+        background: #FFC745;
+    }
+
+    header .navigation.active .nav-items {
+        background: #ffffff;
+        padding: 40px;
+        margin: 24px;
+        border-radius: 8px;
+        box-shadow: 0 5px 25px rgba(1, 1, 1, 0.2);
+        width: 480px;
+        max-width: 480px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: 0.4s ease;
+    }
+
+    .menu-btn {
+        background: url(images/menu.png);
+        background-size: 30px;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        transition: 0.8s ease;
+    }
+
+    .menu-btn.active {
+        z-index: 99;
+        background: url(images/close1.png);
+        background-size: 30px;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        transition: 0.8s ease;
+    }
+
+    section {
+        padding: 80px 16px;
+    }
+
+    #home .media-icons {
+        right: 16px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
 }

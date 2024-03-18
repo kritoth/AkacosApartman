@@ -1,3 +1,16 @@
+
+const menuBtn = document.querySelector('.menu-btn');
+const navigation = document.querySelector('.navigation');
+
+/**
+ * Toggle the menu button and navigation when the user clicks on the menu button.
+ */
+menuBtn.addEventListener('click', () => {
+    menuBtn.classList.toggle('active');
+    navigation.classList.toggle('active');
+})
+
+
 /**
  * Show or hide elements on the page based on the given IDs.
  *
