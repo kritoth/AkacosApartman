@@ -124,7 +124,7 @@ section {
     margin-bottom: 64px;
 }
 
-#home .media-icons {
+section .media-icons {
     z-index: 88;
     position: absolute;
     display: flex;
@@ -133,17 +133,17 @@ section {
     transition: 0.4s ease;
 }
 
-#home .media-icons a {
+section .media-icons a {
     color: #FFFFFF;
     font-size: 1.4em;
     transition: 0.4s ease;
 }
 
-#home .media-icons a:not(:last-child) {
+section .media-icons a:not(:last-child) {
     margin-bottom: 20px;
 }
 
-#home .media-icons a:hover {
+section .media-icons a:hover {
     color: #FFC745;
     transform: scale(1.2);
 }
@@ -166,7 +166,7 @@ section {
 
 @media screen and (max-width: 768px) {
     header {
-        padding: 12px 20px;
+        padding: 12px;
     }
     
     header .brand img {
@@ -225,6 +225,11 @@ section {
         transition: 0.8s ease;
     }
 
+    .menu-btn:hover {
+        color: #FFC745;
+        transform: scale(1.2);
+    }
+
     .menu-btn.active {
         z-index: 99;
         background: url(images/close1.png);
@@ -237,12 +242,18 @@ section {
         transition: 0.8s ease;
     }
 
+    .menu-btn.active:hover {
+        color: #FFC745;
+        transform: scale(1.2);
+    }
+
     section {
         padding: 80px 16px;
     }
 
-    #home .media-icons {
+    section .media-icons {
         right: 16px;
+        transform: scale(0.8);
     }
 
     #home-btn {
