@@ -124,26 +124,27 @@ section {
     margin-bottom: 64px;
 }
 
-section .media-icons {
+main .media-icons {
     z-index: 88;
     position: absolute;
     display: flex;
     flex-direction: column;
+    top: 40%;
     right: 32px;
     transition: 0.4s ease;
 }
 
-section .media-icons a {
+main .media-icons a {
     color: #FFFFFF;
     font-size: 1.4em;
     transition: 0.4s ease;
 }
 
-section .media-icons a:not(:last-child) {
+main .media-icons a:not(:last-child) {
     margin-bottom: 20px;
 }
 
-section .media-icons a:hover {
+main .media-icons a:hover {
     color: #FFC745;
     transform: scale(1.2);
 }
@@ -250,7 +251,7 @@ section .media-icons a:hover {
         padding: 80px 16px;
     }
 
-    section .media-icons {
+    main .media-icons {
         right: 16px;
         transform: scale(0.8);
     }
