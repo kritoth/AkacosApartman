@@ -256,11 +256,13 @@ main .media-icons a:hover {
         transform: scale(0.8);
     }
 
-    #home-btn {
-        display: block;
-    }
 }
 
 @media screen and (max-width: 600px) {
 
+    #home .content h1 {
+        font-size: 1.4em;
+        line-height: normal;
+        margin-bottom: 16px;
+    }
 }
