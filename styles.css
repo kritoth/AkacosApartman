@@ -25,7 +25,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 120px;
+    padding: 20px 100px;
     transition: 0.8s ease;
 }
 
@@ -124,8 +124,8 @@ main .media-icons a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.6);
-    
+    background: #ffffff;
+    opacity: 0.6;
 }
 
 #home .content {
@@ -165,8 +165,251 @@ main .media-icons a:hover {
     -webkit-filter: blur(8px);
 }
 
+/* About */
+#about {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #726559;
+}
+
+#about::before {
+    z-index: 77;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #726559;
+    opacity: 0.6;
+    
+}
+
+#about .content {
+    color: #ffffff;
+    z-index: 88;
+    width: 80%;
+    margin-top: 48px;
+}
+
+#about .content h1 {
+    font-size: 4em;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    line-height: 72px;
+    margin-bottom: 40px;
+}
+
+#about .content h1 span {
+    font-size: 1.2em;
+    font-weight: 400;
+}
+
+#about .content p {
+    margin-bottom: 64px;
+}
+
+#about img {
+    z-index: 00;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+}
+
+/* Rooms */
+#rooms {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #726559;
+}
+
+#rooms::before {
+    z-index: 77;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #726559;
+    opacity: 0.6;
+    
+}
+
+#rooms .content {
+    color: #ffffff;
+    z-index: 88;
+    width: 80%;
+    margin-top: 48px;
+}
+
+#rooms .content h1 {
+    font-size: 4em;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    line-height: 72px;
+    margin-bottom: 40px;
+}
+
+#rooms .content h1 span {
+    font-size: 1.2em;
+    font-weight: 400;
+}
+
+#rooms .content p {
+    margin-bottom: 64px;
+}
+
+#rooms img {
+    z-index: 00;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+}
+
+/* Gallery */
+#gallery {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #726559;
+}
+
+#gallery::before {
+    z-index: 77;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #726559;
+    opacity: 0.6;
+    
+}
+
+#gallery .content {
+    color: #ffffff;
+    z-index: 88;
+    width: 80%;
+    margin-top: 48px;
+}
+
+#gallery .content h1 {
+    font-size: 4em;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    line-height: 72px;
+    margin-bottom: 40px;
+}
+
+#gallery .content h1 span {
+    font-size: 1.2em;
+    font-weight: 400;
+}
+
+#gallery .content p {
+    margin-bottom: 64px;
+}
+
+#gallery img {
+    z-index: 00;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+}
+
+/* Contact */
+#contact {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #726559;
+}
+
+#contact::before {
+    z-index: 77;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #726559;
+    opacity: 0.6;
+    
+}
+
+#contact .content {
+    color: #ffffff;
+    z-index: 88;
+    width: 80%;
+    margin-top: 48px;
+}
+
+#contact .content h1 {
+    font-size: 4em;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    line-height: 72px;
+    margin-bottom: 40px;
+}
+
+#contact .content p {
+    margin-bottom: 64px;
+}
+
+#contact img {
+    z-index: 00;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+}
+
 /* Initial state */
-#about, #rooms, #gallery, #contact, #home-btn {
+#about, #rooms, #gallery, #contact {
     display:none;
 }
 
