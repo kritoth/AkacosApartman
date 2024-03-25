@@ -100,7 +100,7 @@ main .media-icons a:not(:last-child) {
 }
 
 main .media-icons a:hover {
-    color: #FFC745;
+    color: #FFC745 !important;
     transform: scale(1.2);
 }
 
