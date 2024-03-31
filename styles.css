@@ -413,6 +413,7 @@ main .media-icons a:hover {
     display:none;
 }
 
+/* Media Queries */
 @media screen and (max-width: 768px) {
     header {
         padding: 12px;
