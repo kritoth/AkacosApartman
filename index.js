@@ -117,7 +117,7 @@ function changeLogo() {
     console.log(`changeLogo called with: ${shownPageId} and menuOpen is: ${navMenuOpen}`);
     switch (shownPageId) {
         case "home":
-            logo.src = "/images/logo1.png";
+            logo.src = "/images/logo2.png";
             break;
         case "about":
             logo.src = "/images/logo2.png";
@@ -139,8 +139,10 @@ function changeColors() {
     console.log(`changeColors called with: ${shownPageId} and menuOpen is: ${navMenuOpen}`);
         switch (shownPageId) {
             case "home":
-                colorButtonsDark();
-                colorMediaIconsDark();
+                /*colorButtonsDark();
+                colorMediaIconsDark();*/
+                colorButtonsLight();
+                colorMediaIconsLight();
                 if (navMenuOpen) {
                     colorButtonsDark();
                 }
