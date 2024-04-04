@@ -27,16 +27,17 @@ const sections = document.getElementsByTagName("section");
 let navMenuOpen = false;
 
 /**
+ * Flag to indicate which page is shown. Start with the home page.
+ */
+let shownPageId = "home";
+
+/**
  * Main colors.
  */
 const darkMainColor = "#726559";
 const mediumMainColor = "#BBA997";
 const lightMainColor = "#ffffff";
-
-/**
- * Flag to indicate which page is shown. Start with the home page.
- */
-let shownPageId = "home";
+const contrastTextColor = "#FFC745";
 
 /*
  * Tablet
@@ -60,12 +61,16 @@ const mediaQuery = window.matchMedia(viewportTablet);
 
 /**
  * Toggle the menu button and navigation when the user clicks on the menu button.
+ * Transform the menu button when its clicked.
+ * Color the navigation buttons if the menu is open.
  */
 menuBtn.addEventListener('click', () => {
     menuBtn.classList.toggle('active');
     navMenuOpen = navigation.classList.toggle('active');
     //console.log(`menuBtn clicked and navMenuOpen is: ${navMenuOpen}`);
     
+    transformMenu();
+
     if(navMenuOpen){
         colorButtonsDark();
     }
@@ -214,3 +219,52 @@ function colorMediaIconsLight() {
     }
     return false;
 }
+
+
+
+/**
+ * Transform the hamburger menu into crossmark.
+ */
+function transformMenu() {
+    const spans = menuBtn.querySelectorAll('span');
+    spans.forEach((span, index) => {
+        if (index === 0) {
+            span.style.transformOrigin = '0% 0%';
+        } else if (index === 1) {
+            span.style.transformOrigin = '0% 100%';
+        } else if (index === 2) {
+            span.style.transformOrigin = '0% 100%';
+        }
+
+        if (navMenuOpen) {
+            // Menu is checked (open)
+            if (index === 0) {
+                span.style.transform = 'opacity(1)';
+                span.style.transform = 'rotate(44deg) translate(-6px, 0px)';
+                span.style.background = contrastTextColor;
+            } else if (index === 1) {
+                span.style.opacity = '0';
+                span.style.transform = 'scale(0.2)';
+            } else if (index === 2) {
+                span.style.transform = 'rotate(-45deg) translate(-6px, 0px)';
+                span.style.background = contrastTextColor;
+                
+            }
+        } else {
+            // Menu is unchecked (closed)
+            span.style.transform = 'none';
+            span.style.opacity = '1';
+            
+            span.style.display = 'block';
+            span.style.width = '38px';
+            span.style.height = '4px';
+            span.style.position = 'relative';
+            span.style.background = '#ffffff';
+            span.style.borderRadius = '2px';
+            span.style.transition = 'ease-in-out 0.4s';
+        }
+    });
+    return false;
+}
+
+//span.classList.toggle('cross');
