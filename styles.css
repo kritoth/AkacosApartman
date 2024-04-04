@@ -464,14 +464,11 @@ main .media-icons a:hover {
         transition: 0.4s ease;
     }
 
+    /* Hamburger button */
     .menu-btn {
         width: 40px;
         height: 40px;
         cursor: pointer;
-    }
-
-    .menu-btn.active {
-        z-index: 99;
     }
 
     .menu-btn span{
@@ -488,6 +485,19 @@ main .media-icons a:hover {
         margin-bottom: 4px;
     }
 
+    .menu-btn span:first-child {
+        transform-origin: 0% 0%;
+    }
+
+    .menu-btn span:nth-child(2) {
+        transform-origin: 50% 50%;
+    }
+
+    .menu-btn span:last-child {
+        transform-origin: 0% 100%;
+    }
+
+    /* Hamburger button Hover effects */
     .menu-btn:hover span:nth-child(2) {
         transform: scale(0.8);
         transition: ease 0.8s;
@@ -495,29 +505,50 @@ main .media-icons a:hover {
 
     .menu-btn:hover span {
         background: #FFC745;
-        transition: ease-in-out 0.4s;
+        transition: ease 0.8s;
     }
 
-    .menu-btn.active span{
+    /* Crossmark button */
+    .menu-btn.active {
+        z-index: 88;
+    }
+
+    .menu-btn.active span {
         display: block;
         width: 38px;
         height: 4px;
         position: relative;
         background: #ffc745;
         border-radius: 2px;
-        transition: ease-in-out 0.4s;
-        }
+        transition: ease-in-out 0.8s;
+    }
 
+    .menu-btn.active span:first-child{
+        /*transform: opacity(1);*/
+        transform: rotate(44deg) translate(-6px, 0px);
+        background: #FFC745;
+    }
+    .menu-btn.active span:nth-child(2){
+        opacity: 0;
+        transform: scale(0.1);
+    }
+    .menu-btn.active span:last-child{
+        transform: rotate(-45deg) translate(-6px, 0px);
+        background: #FFC745;
+    }
+
+    /* Crossmark button Hover effects */
     .menu-btn.active:hover span {
         background: #ffffff;
-        transform: scale(1.2);
         transition: ease 0.8s;
     }
 
+    /* Section */
     section {
         padding: 80px 16px;
     }
 
+    /* Media icons */
     main .media-icons {
         right: 16px;
         transform: scale(0.8);

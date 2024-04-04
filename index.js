@@ -69,7 +69,7 @@ menuBtn.addEventListener('click', () => {
     navMenuOpen = navigation.classList.toggle('active');
     //console.log(`menuBtn clicked and navMenuOpen is: ${navMenuOpen}`);
     
-    transformMenu();
+    //transformMenu();
 
     if(navMenuOpen){
         colorButtonsDark();
@@ -228,6 +228,7 @@ function colorMediaIconsLight() {
 function transformMenu() {
     const spans = menuBtn.querySelectorAll('span');
     spans.forEach((span, index) => {
+        //span.classList.toggle('cross');
         if (index === 0) {
             span.style.transformOrigin = '0% 0%';
         } else if (index === 1) {
@@ -266,5 +267,3 @@ function transformMenu() {
     });
     return false;
 }
-
-//span.classList.toggle('cross');
