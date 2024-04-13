@@ -1,63 +1,93 @@
 
-/**
- * Get the menu button and the navigation.
- */
-const menuBtn = document.querySelector('.menu-btn');
-const navigation = document.querySelector('.navigation');
-
-/**
- * Get the IDs of the navigation buttons and the media icons.
- */
+/** Get the logo and the media icons.*/
 const logo = document.getElementById("logo-img");
-const homeBtn = document.getElementById("home-btn");
-const aboutBtn = document.getElementById("about-btn");
-const roomsBtn = document.getElementById("rooms-btn");
-const galleryBtn = document.getElementById("gallery-btn");
-const contactBtn = document.getElementById("contact-btn");
 const mediaIcons = document.getElementById("media-icons").getElementsByTagName("a");
 
-/**
- * Get the IDs of the sections.
- */
-const sections = document.getElementsByTagName("section");
+/** Get the menu button, the navigation, the sections and the navigation elements.*/
+const menuBtn = document.querySelector('.menu-btn');
+const navigation = document.querySelector('.navigation');
+const navButtons = document.querySelectorAll('.nav-items a');
+const sections = document.querySelectorAll('.main-section');
 
-/**
- * Flag to indicate if the menu is open. Start with the menu not open.
- */
+/** Flag to indicate if the menu is open. Start with the menu not open.*/
 let navMenuOpen = false;
 
-/**
- * Flag to indicate which page is shown. Start with the home page.
- */
+/** Flag to indicate which page is shown. Start with the home page.*/
 let shownPageId = "home";
 
+
+function show(shown, ...hidden) {
+    let shownPage = document.getElementById(shown);
+    
+    // Set the flag to the ID of the shown page
+    shownPageId = shownPage.id;
+    
+    // If the page is not visible, show it. Otherwise, hide it. With providing time to transition.
+    // If the shownPage has the 'hidden' class or its ID matches the ID of the currently shown page.
+    if (shownPage.classList.contains('hidden') || shownPageId === shownPage.id) {
+        // Remove the 'hidden' class.
+        shownPage.classList.remove('hidden');
+        // Give time for the transition to finish before removing the 'visuallyhidden' class.
+        setTimeout(function () {
+            shownPage.classList.remove('visuallyhidden');
+        }, 20);
+        // Add the 'visuallyhidden' then the 'hidden' class to the pages to be hidden.
+        for (let i = 0; i < hidden.length; i++) {
+            document.getElementById(hidden[i]).classList.add('visuallyhidden');
+            document.getElementById(hidden[i]).classList.add('hidden');
+            //nem használtam a 'transitionend'-et
+        }
+    } else {
+        // If the page is visible, hide it by adding the 'visuallyhidden' class first.
+        shownPage.classList.add('visuallyhidden');
+        // Then give time for the transition to finish before adding the 'hidden' class, by adding a single event handler using the options object.
+        shownPage.addEventListener('transitionend', 
+            function(e) {
+                shownPage.classList.add('hidden');
+                // Add the 'visuallyhidden' then the 'hidden' class to the pages to be hidden.
+                for (let i = 0; i < hidden.length; i++) {
+                    document.getElementById(hidden[i]).classList.add('visuallyhidden');
+                    document.getElementById(hidden[i]).classList.add('hidden');
+                    //nem használtam a 'transitionend'-et
+                }
+            },
+            // This is the options object, which tells the browser to wait for the transitionend event to occur once, then it stops looking
+            {
+            capture: false,
+            once: true,
+            passive: false
+            }
+        );
+    }
+    // Change the style according to the shown page
+    changeLogo();
+    changeColors();
+
+    return false;
+}
+
+// Adds a click event listener to each navButtons to activate the clicked navBtn and deactivate the others.
+navButtons.forEach((btn, i) => {    
+    btn.addEventListener('click', () => activateNavBtn(i));
+})
+// Adds a click event listener to the logo-img to activate the homeBtn and deactivate the others.
+logo.addEventListener('click', () => activateNavBtn(0));
+
 /**
- * Main colors.
+ * Activates the navigation buttons by setting the active class to the clicked one and removes it from the others.
+ *
+ * @param {boolean} manual - index of the button to set as active
  */
-const darkMainColor = "#726559";
-const mediumMainColor = "#BBA997";
-const lightMainColor = "#ffffff";
-const contrastTextColor = "#FFC745";
-
-/*
- * Tablet
- */
-const viewportTablet = '(max-width: 768px)';
-
-/*
- * Mobile
- */
-const viewportMobile = '(max-width: 600px)';
-
-/**
- * Desktop
- */
-const viewportDesktop = '(min-width: 768px)';
-
-/*
- * Create a media query object
- */
-const mediaQuery = window.matchMedia(viewportTablet);
+let activateNavBtn = function(manual){
+    // Sets the active class to the clicked button and removes it from the other buttons
+    navButtons.forEach((navButton) => {
+        navButton.classList.remove('active');
+        //navButton.setAttribute('id',navButton.getAttribute('id').replace('-active',''));
+    });
+    let navButton = navButtons[manual];
+    navButton.classList.add('active');
+    //navButton.setAttribute('id',navButton.getAttribute('id') + '-active');
+}
 
 /**
  * Toggle the menu button and navigation when the user clicks on the menu button.
@@ -76,50 +106,44 @@ menuBtn.addEventListener('click', () => {
     }
 })
 
+
+/** Tablet*/
+const viewportTablet = '(max-width: 768px)';
+/** Mobile*/
+const viewportMobile = '(max-width: 600px)';
+/*** Desktop*/
+const viewportDesktop = '(min-width: 768px)';
+
+/** Create a media query object*/
+const mediaQuery = window.matchMedia(viewportTablet);
+
+/**
+ * Handles the change event for the media query.
+ * If the viewport width matches the defined media query (max-width: 768px),
+ * it logs the match and calls `changeColors` with the current shown page ID.
+ * Otherwise, it logs that the media query does not match and again calls `changeColors`.
+ *
+ * @param {MediaQueryListEvent} event - The event object from the media query change.
+ */
 mediaQuery.addEventListener('change', (event) => {
     // If the viewport is 768 pixels wide or less 
     if (event.matches) {
       // Media query matches
-      console.log(`Media query matches 768px or less: ${viewportTablet}`);
       // Color buttons according to shown page
       changeColors(shownPageId);
     } else {
       // Media query does not match
-      console.log(`Media query does not match 768px or less: ${viewportTablet}`);
       // Color buttons according to shown page
       changeColors(shownPageId);
     }
-  });
+});
 
 /**
- * Show or hide elements on the page based on the given IDs.
+ * Change the logo based on the shown page ID.
  *
- * @param {string} shown - The ID of the element to be shown
- * @param {...string} hidden - The IDs of the elements to be hidden
- * @return {boolean} Always returns false
+ * @return {boolean} The success status of the logo change.
  */
-function show(shown, ...hidden) {
-    let shownPage = document.getElementById(shown);
-    
-    // Set the flag to the ID of the shown page
-    shownPageId = shownPage.id;
-    
-    // Show the page
-    shownPage.style.display = 'flex';
-    // Hide the other pages
-    for (let i = 0; i < hidden.length; i++) {
-        document.getElementById(hidden[i]).style.display = 'none';
-    }
-
-    // Change the style according to the shown page
-    changeLogo();
-    changeColors();
-
-    return false;
-}
-
 function changeLogo() {
-    console.log(`changeLogo called with: ${shownPageId} and menuOpen is: ${navMenuOpen}`);
     switch (shownPageId) {
         case "home":
             logo.src = "/images/logo2.png";
@@ -140,12 +164,20 @@ function changeLogo() {
     return false;
 }
 
+/** Main colors.*/
+const darkMainColor = "#726559";
+const mediumMainColor = "#BBA997";
+const lightMainColor = "#ffffff";
+const contrastTextColor = "#FFC745";
+
+/**
+ * A function to change the colors based on the shown page ID and the status of the navigation menu.
+ *
+ * @return {boolean} false indicating the completion of color change
+ */
 function changeColors() {
-    console.log(`changeColors called with: ${shownPageId} and menuOpen is: ${navMenuOpen}`);
         switch (shownPageId) {
             case "home":
-                /*colorButtonsDark();
-                colorMediaIconsDark();*/
                 colorButtonsLight();
                 colorMediaIconsLight();
                 if (navMenuOpen) {
@@ -160,7 +192,6 @@ function changeColors() {
                 }
                 break;
             case "rooms":
-
                 colorButtonsLight();
                 colorMediaIconsLight();
                 if (navMenuOpen) {
@@ -168,7 +199,6 @@ function changeColors() {
                 }
                 break;
             case "gallery":
-
                 colorButtonsLight();
                 colorMediaIconsLight();
                 if (navMenuOpen) {
@@ -176,7 +206,6 @@ function changeColors() {
                 }
                 break;
             case "contact":
-
                 colorButtonsLight();
                 colorMediaIconsLight();
                 if (navMenuOpen) {
@@ -189,20 +218,16 @@ function changeColors() {
 }
 
 function colorButtonsDark() {
-    homeBtn.style.color = darkMainColor;
-    aboutBtn.style.color = darkMainColor;
-    roomsBtn.style.color = darkMainColor;
-    galleryBtn.style.color = darkMainColor;
-    contactBtn.style.color = darkMainColor;
+    navButtons.forEach((navButton) => {
+        navButton.style.color = darkMainColor;
+    })
     return false;
 }
 
 function colorButtonsLight() {
-    homeBtn.style.color = lightMainColor;
-    aboutBtn.style.color = lightMainColor;
-    roomsBtn.style.color = lightMainColor;
-    galleryBtn.style.color = lightMainColor;
-    contactBtn.style.color = lightMainColor;
+    navButtons.forEach((navButton) => {
+        navButton.style.color = lightMainColor;
+    })
 return false;
 }
 

@@ -56,7 +56,7 @@ header .navigation .nav-items a {
     font-weight: 400;
     text-decoration: none;
     margin-left: 30px;
-    transition: 0.8s ease;
+    transition: 0.4s ease;
 }
 
 header .navigation .nav-items a::before {
@@ -74,7 +74,21 @@ header .navigation .nav-items a:hover:before {
     width: 100%;
 }
 
+header .navigation .nav-items .nav-btn.active::before {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #FFC745;
+}
+
 /* Main */
+main {
+    background: #BBA997;
+}
+
 section {
     padding: 120px 180px;
 }
@@ -104,7 +118,7 @@ main .media-icons a:hover {
     transform: scale(1.2);
 }
 
-/* Home */
+/* Main Sections */
 .main-section {
     min-height: 100vh;
     width: 100%;
@@ -113,7 +127,21 @@ main .media-icons a:hover {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: #726559;
+    
+    clip-path: circle(150% at 0 50%);
+    transition: 1.5s ease;
+    transition-property: clip-path;
+}
+
+.visuallyhidden {
+    clip-path: circle(0% at 0 50%);
+    transition: 1.5s ease;
+    transition-property: clip-path;
+    opacity: 0;
+}
+
+.hidden {
+    display: none;
 }
 
 .main-section::before {
@@ -153,7 +181,7 @@ main .media-icons a:hover {
     margin-bottom: 64px;
 }
 
-.main-section img {
+main img {
     z-index: 00;
     position: absolute;
     top: 0;
@@ -163,12 +191,6 @@ main .media-icons a:hover {
     object-fit: cover;
     filter: blur(8px);
     -webkit-filter: blur(8px);
-}
-
-
-/* Initial state */
-#about, #rooms, #gallery, #contact {
-    display:none;
 }
 
 /* Media Queries */
