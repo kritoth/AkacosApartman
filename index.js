@@ -154,7 +154,7 @@ function changeLogo() {
         case "rooms":
             logo.src = "/images/logo4.png";
             break;
-        case "gallery":
+        case "prices":
             logo.src = "/images/logo4.png";
             break;
         case "contact":
@@ -198,7 +198,7 @@ function changeColors() {
                     colorButtonsDark();
                 }
                 break;
-            case "gallery":
+            case "prices":
                 colorButtonsLight();
                 colorMediaIconsLight();
                 if (navMenuOpen) {
