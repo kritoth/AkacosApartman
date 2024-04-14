@@ -21,7 +21,6 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -191,6 +190,19 @@ main img {
     object-fit: cover;
     filter: blur(8px);
     -webkit-filter: blur(8px);
+}
+
+.contact-link{
+    color: #ffffff;
+    text-decoration: none;
+    transition: 0.8s ease;
+}
+
+.contact-link:hover{
+    font-size: 1em;
+    font-weight: 500;
+    color: #FFC745;
+    transition: 0.8s ease;
 }
 
 /* Media Queries */
