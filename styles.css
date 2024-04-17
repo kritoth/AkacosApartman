@@ -290,12 +290,12 @@ main img {
     }
 
     /* Hamburger button Hover effects */
-    .menu-btn:hover span:nth-child(2) {
+    .menu-btn:active span:nth-child(2) {
         transform: scale(0.8);
         transition: ease 0.8s;
     }
 
-    .menu-btn:hover span {
+    .menu-btn:active span {
         background: #FFC745;
         transition: ease 0.8s;
     }
@@ -330,7 +330,7 @@ main img {
     }
 
     /* Crossmark button Hover effects */
-    .menu-btn.active:hover span {
+    .menu-btn.active:active span {
         background: #ffffff;
         transition: ease 0.8s;
     }
