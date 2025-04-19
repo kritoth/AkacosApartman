@@ -66,10 +66,26 @@ function show(shown, ...hidden) {
     return false;
 }
 
-// Adds a click event listener to each navButtons to activate the clicked navBtn and deactivate the others.
+/**
+ * Adds click event listeners to each navigation button.
+ * When a button is clicked, it:
+ *  - Activates the clicked navigation button by updating the 'active' class.
+ *  - Closes the navigation menu if it was open (especially relevant for mobile view).
+ *  - Updates the `navMenuOpen` flag and removes relevant 'active' classes from the nav menu and hamburger button.
+ */
 navButtons.forEach((btn, i) => {    
-    btn.addEventListener('click', () => activateNavBtn(i));
-})
+    btn.addEventListener('click', () => {
+        activateNavBtn(i);
+        
+        // Close the nav menu if open (especially for mobile)
+        if (navMenuOpen) {
+            navigation.classList.remove('active');
+            menuBtn.classList.remove('active');
+            navMenuOpen = false;
+        }
+    });
+});
+
 // Adds a click event listener to the logo-img to activate the homeBtn and deactivate the others.
 logo.addEventListener('click', () => activateNavBtn(0));
 
